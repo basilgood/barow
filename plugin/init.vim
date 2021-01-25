@@ -74,7 +74,8 @@ call s:Hi('BarowReplace', s:p.UIRed, s:p.statusLine, 'bold')
 call s:Hi('BarowVisual', s:p.UIBlue, s:p.statusLine, 'bold')
 call s:Hi('BarowCommand', s:p.UIBrown, s:p.statusLine, 'bold')
 call s:Hi('BarowTerminal', s:p.UIGreen, s:p.statusLine, 'bold')
-hi link BarowMod BarowNormal
+hi link BarowMode BarowNormal
+hi link BarowModeNC StatusLineNC
 
 let &cpo = s:save_cpo
 unlet s:save_cpo

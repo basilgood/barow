@@ -22,7 +22,8 @@ let s:barowDefault = {
       \  'command': [ 'c', 'BarowCommand' ],
       \  'shell-ex': [ '!', 'BarowCommand' ],
       \  'terminal': [ 't', 'BarowTerminal' ],
-      \  'prompt': [ 'p', 'BarowNormal' ]
+      \  'prompt': [ 'p', 'BarowNormal' ],
+      \  'inactive': [ ' ', 'BarowModeNC' ]
       \},
       \'buf_name': {
       \  'empty': '',
@@ -158,25 +159,24 @@ function! barow#update()
   if !exists("g:barow")
     let g:barow = s:barowDefault
   endif
-  let modeFormat = " %{SetModeHi()}%#BarowMod#%1.1{Mode()[0]}%*"
-  let modeFormatInactive = "  "
+  let mode = "%{SetModeHi()}%#BarowMod#%1.1{Mode()[0]}%*"
+  let modeInactive = "%#BarowModeNC#".get(g:barow, "modes.inactive[0]", s:barowDefault.modes.inactive[0])."%*"
   let spacer = "%="
-  let lineInfo = "%4.9l:%-3.9c %3.3p%% "
   for n in range(1, winnr('$'))
     if n == winnr()
-      let bufName = " %#BarowBufName#%2.50{Bufname()}%*"
-      let ro = " %#BarowRO#%{ReadOnly()}%*"
-      let bufChanged = " %#BarowChange#%1.1{BufChanged()}%*"
-      let rowCol = " %#BarowRowCol#%4.9l:%-3.9c%*"
-      let linePercent = " %#BarowLPercent#%3.3p%%%*"
-      call setwinvar(n, '&statusline', modeFormat.bufName.ro.bufChanged.spacer.rowCol.linePercent)
+      let bufName = "%#BarowBufName#%2.50{Bufname()}%*"
+      let ro = "%#BarowRO#%{ReadOnly()}%*"
+      let bufChanged = "%#BarowChange#%1.1{BufChanged()}%*"
+      let rowCol = "%#BarowRowCol#%4.9l:%-3.9c%*"
+      let linePercent = "%#BarowLPercent#%3.3p%%%*"
+      call setwinvar(n, '&statusline', " ".mode." ".bufName." ".ro." ".bufChanged.spacer.rowCol." ".linePercent." ")
     else
-      let bufName = " %#BarowBufNameNC#%2.50{Bufname()}%*"
-      let ro = " %#BarowRONC#%{ReadOnly()}%*"
-      let bufChanged = " %#BarowChangeNC#%1.1{BufChanged()}%*"
-      let rowCol = " %#BarowRowColNC#%4.9l:%-3.9c%*"
-      let linePercent = " %#BarowLPercentNC#%3.3p%%%*"
-      call setwinvar(n, "&statusline", modeFormatInactive.bufName.ro.bufChanged.spacer.rowCol.linePercent)
+      let bufName = "%#BarowBufNameNC#%2.50{Bufname()}%*"
+      let ro = "%#BarowRONC#%{ReadOnly()}%*"
+      let bufChanged = "%#BarowChangeNC#%1.1{BufChanged()}%*"
+      let rowCol = "%#BarowRowColNC#%4.9l:%-3.9c%*"
+      let linePercent = "%#BarowLPercentNC#%3.3p%%%*"
+      call setwinvar(n, '&statusline', " ".modeInactive." ".bufName." ".ro." ".bufChanged.spacer.rowCol." ".linePercent." ")
     endif
     call setwinvar(n, "&tabline", "%!SetTabLine()")
   endfor
