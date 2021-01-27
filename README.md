@@ -77,6 +77,7 @@ Plug 'doums/barowCoc'
 " ...
 
 let g:barow = {
+" ...
       \  'modules': [
       \    [ 'barowCoc#error', 'BarowError' ],
       \    [ 'barowCoc#warn', 'BarowWarn' ],
