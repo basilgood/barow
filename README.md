@@ -24,6 +24,7 @@ Barow works out of the box.\
 But if you want, here are all the options you can customize
 ```
 " in .vimrc/init.vim
+
 let g:barow = {
       \'modes': {
       \  'normal': [ ' ', 'BarowNormal' ],
@@ -69,7 +70,8 @@ let g:barow = {
 You can add additional modules to your bar in a simple way.\
 For example if you use [Coc](https://github.com/neoclide/coc.nvim) you can use these [modules](https://github.com/doums/barowCoc) to display coc's diagnostics in real time
 ```
-" in .vimrc/init.vim
+" .vimrc/init.vim
+" ...
 
 Plug 'doums/barowCoc'
 " ...
