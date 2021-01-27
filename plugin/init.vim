@@ -131,9 +131,10 @@ call s:Hi('BarowCommand', s:p.UIBrown, s:p.statusLine, 'bold')
 call s:Hi('BarowTerminal', s:p.UIGreen, s:p.statusLine, 'bold')
 hi link BarowMode BarowNormal
 hi link BarowModeNC StatusLineNC
-call s:Hi('BarowError', s:p.UIRed, s:p.statusLine)
+call s:Hi('BarowError', s:p.UIRed, s:p.statusLine, 'bold')
 call s:Hi('BarowWarn', s:p.UIOrange, s:p.statusLine)
 call s:Hi('BarowInfo', s:p.UIBrown, s:p.statusLine)
+call s:Hi('BarowHint', s:p.statusLineNC, s:p.statusLine)
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
