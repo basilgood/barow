@@ -10,9 +10,63 @@ if exists("g:barowInit")
 endif
 let g:barowInit = 1
 
+let g:barowDefault = {
+      \'modes': {
+      \  'normal': [ ' ', 'BarowNormal' ],
+      \  'insert': [ 'i', 'BarowInsert' ],
+      \  'replace': [ 'r', 'BarowReplace' ],
+      \  'visual': [ 'v', 'BarowVisual' ],
+      \  'v-line': [ 'l', 'BarowVisual' ],
+      \  'v-block': [ 'b', 'BarowVisual' ],
+      \  'select': [ 's', 'BarowVisual' ],
+      \  'command': [ 'c', 'BarowCommand' ],
+      \  'shell-ex': [ '!', 'BarowCommand' ],
+      \  'terminal': [ 't', 'BarowTerminal' ],
+      \  'prompt': [ 'p', 'BarowNormal' ],
+      \  'inactive': [ ' ', 'BarowModeNC' ]
+      \},
+      \'buf_name': {
+      \  'empty': '',
+      \  'highlight': [ 'BarowBufName', 'BarowBufNameNC' ]
+      \},
+      \'read_only': {
+      \  'value': 'ro',
+      \  'highlight': [ 'BarowRO', 'BarowRONC' ]
+      \},
+      \'buf_changed': {
+      \  'value': '*',
+      \  'highlight': [ 'BarowChange', 'BarowChangeNC' ]
+      \},
+      \'tab_changed': {
+      \  'value': '*',
+      \  'highlight': [ 'BarowTChange', 'BarowTChangeNC' ]
+      \},
+      \'line_percent': {
+      \  'highlight': [ 'BarowLPercent', 'BarowLPercentNC' ]
+      \},
+      \'row_col': {
+      \  'highlight': [ 'BarowRowCol', 'BarowRowColNC' ]
+      \},
+      \'modules': []
+      \}
+
+function! s:NormalizeConfig()
+  if !exists("g:barow") || type(g:barow) != 4
+    let g:barow = g:barowDefault
+    return
+  endif
+	for key in keys(g:barowDefault)
+	   if !has_key(g:barow, key) || type(g:barowDefault[key]) != type(g:barow[key])
+       let g:barow[key] = g:barowDefault[key]
+     endif
+	endfor
+endfunction
+
+call s:NormalizeConfig()
+
 augroup barow
   autocmd!
-  autocmd VimEnter,BufEnter,BufDelete,WinEnter,TabEnter,TabLeave,TabNew,TabNewEntered,TabClosed,TermEnter,TermLeave * call barow#update()
+  autocmd WinEnter,BufEnter,BufDelete,SessionLoadPost,FileChangedShellPost * call barow#update()
 augroup END
 
 function s:Hi(group, fg, ...)
@@ -49,7 +103,8 @@ let s:p={
       \ 'UIBlue': ['#3592C4', 67],
       \ 'UIGreen': ['#499C54', 71],
       \ 'UIRed': ['#C75450', 131],
-      \ 'UIBrown': ['#93896C', 102]
+      \ 'UIBrown': ['#93896C', 102],
+      \ 'UIOrange': ['#BE9117', 136]
       \ }
 call s:Hi('StatusLine', s:p.statusLineFg, s:p.statusLine)
 call s:Hi('StatusLineNC', s:p.statusLineNC, s:p.statusLine)
@@ -76,6 +131,9 @@ call s:Hi('BarowCommand', s:p.UIBrown, s:p.statusLine, 'bold')
 call s:Hi('BarowTerminal', s:p.UIGreen, s:p.statusLine, 'bold')
 hi link BarowMode BarowNormal
 hi link BarowModeNC StatusLineNC
+call s:Hi('BarowError', s:p.UIRed, s:p.statusLine)
+call s:Hi('BarowWarn', s:p.UIOrange, s:p.statusLine)
+call s:Hi('BarowInfo', s:p.UIBrown, s:p.statusLine)
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
