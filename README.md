@@ -68,7 +68,10 @@ let g:barow = {
 
 ### modules
 You can add additional modules to your bar in a simple way.\
-For example if you use [Coc](https://github.com/neoclide/coc.nvim) you can use these [modules](https://github.com/doums/barowCoc) to display coc's diagnostics in real time
+Available modules:
+- [barowCoc](https://github.com/doums/barowCoc), display coc's diagnostics count and status
+- [barowGit](https://github.com/doums/barowGit), display git current branch
+
 ```
 " .vimrc/init.vim
 " ...
@@ -79,6 +82,7 @@ Plug 'doums/barowCoc'
 let g:barow = {
 " ...
       \  'modules': [
+      \    [ 'barowGit#branch', 'StatusLine' ],
       \    [ 'barowCoc#error', 'BarowError' ],
       \    [ 'barowCoc#warn', 'BarowWarn' ],
       \    [ 'barowCoc#info', 'BarowInfo' ],
