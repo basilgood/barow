@@ -122,7 +122,7 @@ function! s:Modules()
     let [function, hi] = g:barow.modules[index]
     try
       let output = eval(function."()")
-      let modules .= "%#".hi."#".output."%*"
+      let modules .= "%#".hi."#%-1.20(".output."%<%)%*"
       if index >= 0 && len(output) > 0
         let modules .= " "
       endif
@@ -141,7 +141,7 @@ function! barow#update()
   let modules = s:Modules()
   for n in range(1, winnr('$'))
     if n == winnr()
-      let bufName = "%#BarowBufName#%2.50{Bufname()}%*"
+      let bufName = "%#BarowBufName#%2.40{Bufname()}%*"
       let ro = "%#BarowRO#%{ReadOnly()}%*"
       let bufChanged = "%#BarowChange#%1.1{BufChanged()}%*"
       let rowCol = "%#BarowRowCol#%4.9l:%-3.9c%*"
