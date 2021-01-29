@@ -76,6 +76,8 @@ Available modules:
 " .vimrc/init.vim
 " ...
 
+Plug 'doums/barow'
+Plug 'doums/barowGit'
 Plug 'doums/barowCoc'
 " ...
 
