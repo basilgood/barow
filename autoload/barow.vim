@@ -12,7 +12,7 @@ let g:barowAutoload = 1
 
 function! Bufname()
   let bufname = bufname("%")
-  if bufname("%") == ""
+  if empty(bufname)
     return get(g:barow.buf_name, "empty", g:barowDefault.buf_name.empty)
   endif
   return split(bufname, "/")[-1]
@@ -20,7 +20,7 @@ endfunction
 
 function! ReadOnly()
   let filetype = getbufvar("%", "&filetype")
-  if (&readonly || !&modifiable) && filetype !~? 'help\|man'
+  if (&readonly || !&modifiable) && filetype !~? 'help\|man\|qf'
     return get(g:barow.read_only, "value", g:barowDefault.read_only.value)
   endif
   return ""
