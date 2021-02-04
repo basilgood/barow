@@ -69,7 +69,7 @@ let g:barow = {
 ### modules
 You can add additional modules to your bar in a simple way.\
 Available modules:
-- [barowCoc](https://github.com/doums/barowCoc), display coc's diagnostics count and status
+- [barowLSP](https://github.com/doums/barowLSP), display LSP diagnostics count and status
 - [barowGit](https://github.com/doums/barowGit), display git current branch
 
 ```
@@ -78,17 +78,19 @@ Available modules:
 
 Plug 'doums/barow'
 Plug 'doums/barowGit'
-Plug 'doums/barowCoc'
+Plug 'doums/barowLSP'
 " ...
 
 let g:barow = {
 " ...
       \  'modules': [
-      \    [ 'barowGit#branch', 'StatusLine' ],
-      \    [ 'barowCoc#error', 'BarowError' ],
-      \    [ 'barowCoc#warning', 'BarowWarning' ],
-      \    [ 'barowCoc#info', 'BarowInfo' ],
-      \    [ 'barowCoc#status', 'StatusLine' ]
+      \    [ 'barowGit#branch', 'BarowHint' ],
+      \    [ 'barowLSP#error', 'BarowError' ],
+      \    [ 'barowLSP#warning', 'BarowWarning' ],
+      \    [ 'barowLSP#info', 'BarowInfo' ],
+      \    [ 'barowLSP#hint', 'BarowHint' ],
+      \    [ 'barowLSP#coc_status', 'StatusLine' ],
+      \    [ 'barowLSP#ale_status', 'StatusLine' ]
       \  ]
       \}
 ```
