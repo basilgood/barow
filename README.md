@@ -86,7 +86,7 @@ let g:barow = {
       \  'modules': [
       \    [ 'barowGit#branch', 'StatusLine' ],
       \    [ 'barowCoc#error', 'BarowError' ],
-      \    [ 'barowCoc#warn', 'BarowWarn' ],
+      \    [ 'barowCoc#warning', 'BarowWarning' ],
       \    [ 'barowCoc#info', 'BarowInfo' ],
       \    [ 'barowCoc#status', 'StatusLine' ]
       \  ]

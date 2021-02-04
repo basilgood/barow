@@ -108,7 +108,7 @@ call barow#hi('BarowTerminal', s:p.UIGreen, s:p.statusLine, 'bold')
 hi link BarowMode BarowNormal
 hi link BarowModeNC StatusLineNC
 call barow#hi('BarowError', s:p.UIRed, s:p.statusLine, 'bold')
-call barow#hi('BarowWarn', s:p.UIOrange, s:p.statusLine)
+call barow#hi('BarowWarning', s:p.UIOrange, s:p.statusLine)
 call barow#hi('BarowInfo', s:p.UIBrown, s:p.statusLine)
 call barow#hi('BarowHint', s:p.statusLineNC, s:p.statusLine)
 
