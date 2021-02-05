@@ -19,8 +19,7 @@ function! Bufname()
 endfunction
 
 function! ReadOnly()
-  let filetype = getbufvar("%", "&filetype")
-  if (&readonly || !&modifiable) && filetype !~? 'help\|man\|qf'
+  if (&readonly || !&modifiable) && empty(getbufvar("%", "&buftype"))
     return get(g:barow.read_only, "value", g:barowDefault.read_only.value)
   endif
   return ""
