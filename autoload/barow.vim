@@ -10,12 +10,35 @@ if exists("g:barowAutoload")
 endif
 let g:barowAutoload = 1
 
-function! Bufname()
-  let bufname = bufname("%")
-  if empty(bufname)
-    return get(g:barow.buf_name, "empty", g:barowDefault.buf_name.empty)
+function! s:path_head(path, default)
+  let list = split(a:path, '/')
+  if empty(list)
+    return a:default
   endif
-  return split(bufname, "/")[-1]
+  return list[-1]
+endfunction
+
+function! Bufname()
+  let info = getwininfo(win_getid())
+  let bufname = bufname("%")
+  if info[0].loclist == 1
+    let loc_title = getloclist(0, {'title' : 1}).title
+    if empty(loc_title)
+      return 'loclist'
+    endif
+    return s:path_head(loc_title, 'loclist')
+  endif
+  if info[0].quickfix == 1
+    let qf_title = getqflist({'title' : 1}).title
+    if empty(qf_title)
+      return 'quickfix'
+    endif
+    return s:path_head(qf_title, 'quickfix')
+  endif
+  if empty(bufname)
+    return get(g:barow.buf_name, 'empty', g:barowDefault.buf_name.empty)
+  endif
+  return s:path_head(bufname, '')
 endfunction
 
 function! ReadOnly()
@@ -86,7 +109,7 @@ function! TabLabel(n)
   if empty(bufname)
     return a:n
   endif
-  return split(bufname, "/")[-1]
+  return s:path_head(bufname, ' ')
 endfunction
 
 function! SetTabLine()
