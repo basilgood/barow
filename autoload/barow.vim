@@ -149,6 +149,7 @@ function! s:Modules()
         let modules .= " "
       endif
     catch
+      call s:printerr('barow module error: '.function)
     endtry
     let index = index - 1
   endwhile
@@ -203,6 +204,12 @@ function barow#hi(group, fg, ...)
         \ 'gui=' . style
         \ ]
   execute join(hiList)
+endfunction
+
+function s:printerr(msg)
+  echohl ErrorMsg
+  echom a:msg
+  echohl None
 endfunction
 
 let &cpo = s:save_cpo
