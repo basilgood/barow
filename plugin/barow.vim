@@ -73,7 +73,7 @@ augroup END
 
 let s:p={
       \ 'null': ['NONE', 'NONE'],
-      \ 'statusLine': ['#313335', 237],
+      \ 'statusLine': ['#313335', 236],
       \ 'statusLineFg': ['#BBBBBB', 250],
       \ 'statusLineNC': ['#787878', 243],
       \ 'tabLineFg': ['#A9B7C6', 145],
