@@ -2,13 +2,13 @@
 " License, v. 2.0. If a copy of the MPL was not distributed with this
 " file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-let s:save_cpo = &cpo
-set cpo&vim
-
 if exists('g:barow_autoload')
   finish
 endif
 let g:barow_autoload = 1
+
+let s:save_cpo = &cpo
+set cpo&vim
 
 function! s:path_head(path, default)
   let list = split(a:path, '/')
