@@ -1,7 +1,9 @@
+barow	barow.txt	/*barow*
 barow#hi	barow.txt	/*barow#hi*
 barow#update	barow.txt	/*barow#update*
+barow-api	barow.txt	/*barow-api*
 barow-color	barow.txt	/*barow-color*
 barow-license	barow.txt	/*barow-license*
-barow-module	barow.txt	/*barow-module*
+barow-modules	barow.txt	/*barow-modules*
 barow-setting	barow.txt	/*barow-setting*
 barow.txt	barow.txt	/*barow.txt*

@@ -1,6 +1,6 @@
 *barow.txt*  A minimalist statusline
 
-
+                                                                       *barow*
 ==============================================================================
 SETTING                                                        *barow-setting*
 
@@ -54,7 +54,8 @@ NOTE: For `modes`, the text value is intentionally set to one character max.
 NOTE: The strings `Barow*` are highlight groups. You can use |barow#hi|
 function to create your own groups.
 
-                                                                *barow-module*
+==============================================================================
+MODULES                                                        *barow-modules*
 
 You can add additional modules to your bar in a simple way.
 Available modules:
@@ -90,14 +91,12 @@ NOTE: Module outputs will only appear in the statusbar of the current window.
 NOTE: You can define your own module. To update the statusline call
 |barow#update| function.
 
-                                                                    *barow#hi*
+                                                                 *barow-color*
 
-You can use `barow#hi` function to create your own highlight groups.
->
-  " arguments:   group_name,     fg_color,       bg_color,       style
-  call barow#hi('MyCustomGroup', ['#ffffff', 7], ['#000000', 0], 'bold')
-<
-For more details see |highlight-args|.
+Truecolor and 256 colors are supported.
+
+==============================================================================
+API                                                                *barow-api*
 
                                                                  *barow#update*
 
@@ -107,9 +106,14 @@ a module.
   call barow#update()
 <
 
-                                                                 *barow-color*
+                                                                    *barow#hi*
 
-Truecolor and 256 colors are supported.
+You can use `barow#hi` function to create your own highlight groups.
+>
+  " arguments:   group_name,     fg_color,       bg_color,       style
+  call barow#hi('MyCustomGroup', ['#ffffff', 7], ['#000000', 0], 'bold')
+<
+For more details see |highlight-args|.
 
 ==============================================================================
 LICENSE                                                        *barow-license*
