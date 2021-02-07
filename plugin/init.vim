@@ -51,7 +51,7 @@ let g:barowDefault = {
       \}
 
 function! s:NormalizeConfig()
-  if !exists("g:barow") || type(g:barow) != 4
+  if !exists('g:barow') || type(g:barow) != v:t_dict
     let g:barow = g:barowDefault
     return
   endif
