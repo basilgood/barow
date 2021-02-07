@@ -75,7 +75,7 @@ NOTE: For any value you want to customize provide a value with the same data str
 
 NOTE: For `modes`, `buf_changed` and `tab_changed` the text length is intentionally set to one character max.
 
-NOTE: The strings that starts with `Barow*` are highlight groups. To change the colors you can give your own groups. Use |barow#hi| function to define your own groups.
+NOTE: The strings that starts with `Barow*` are highlight groups. To change the colors you can give your own groups. Use `barow#hi` function to define your own groups.
 
 ### modules
 
