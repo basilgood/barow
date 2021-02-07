@@ -1,31 +1,14 @@
-## Barow
+*barow.txt*  A minimalist statusline
 
-![barow](./img/barow.png)
 
-A minimalist statusline for [n](https://neovim.io/)/[vim](https://www.vim.org/).
+==============================================================================
+SETTING                                                        *barow-setting*
 
-### install
-If you use a plugin manager, follow the traditional way.
+All settings are optional.
+You can customize the following options:
 
-For example with [vim-plug](https://github.com/junegunn/vim-plug) add this in `.vimrc`/`init.vim`:
-```
-Plug 'doums/barow'
-```
-
-Then run in vim:
-```
-:source $MYVIMRC
-:PlugInstall
-```
-If you use vim's native package `:h packages`.
-
-### usage
-Barow works out of the box.\
-But if you want, here are all the options you can customize
-```
-" in .vimrc/init.vim
-
-let g:barow = {
+>
+  let g:barow = {
       \'modes': {
       \  'normal': [ ' ', 'BarowNormal' ],
       \  'insert': [ 'i', 'BarowInsert' ],
@@ -64,28 +47,32 @@ let g:barow = {
       \},
       \'modules': []
       \}
-```
+<
+
 NOTE: For `modes`, the text value is intentionally set to one character max.
 
-NOTE: The strings `Barow*` are highlight groups. You can use `barow#hi` function to create your own groups.
+NOTE: The strings `Barow*` are highlight groups. You can use |barow#hi|
+function to create your own groups.
 
-### modules
-You can add additional modules to your bar in a simple way.\
+                                                                *barow-module*
+
+You can add additional modules to your bar in a simple way.
 Available modules:
-- [barowLSP](https://github.com/doums/barowLSP), display LSP diagnostics count and status
-- [barowGit](https://github.com/doums/barowGit), display git current branch
 
-```
-" .vimrc/init.vim
-" ...
+`barowLSP` https://github.com/doums/barowLSP
+display LSP diagnostic and status
 
-Plug 'doums/barow'
-Plug 'doums/barowGit'
-Plug 'doums/barowLSP'
-" ...
+`barowGit` https://github.com/doums/barowGit
+display git current branch
 
-let g:barow = {
-" ...
+>
+  Plug 'doums/barow'
+  Plug 'doums/barowGit'
+  Plug 'doums/barowLSP'
+  " ...
+
+  let g:barow = {
+  " ...
       \  'modules': [
       \    [ 'barowGit#branch', 'BarowHint' ],
       \    [ 'barowLSP#error', 'BarowError' ],
@@ -96,31 +83,37 @@ let g:barow = {
       \    [ 'barowLSP#ale_status', 'StatusLine' ]
       \  ]
       \}
-```
+<
 
 NOTE: Module outputs will only appear in the statusbar of the current window.
 
-You can define your own module. To update the statusline call `barow#update` function.
+NOTE: You can define your own module. To update the statusline call
+|barow#update| function.
 
-### `barow#hi`
+                                                                    *barow#hi*
 
 You can use `barow#hi` function to create your own highlight groups.
-```
-" arguments:   group_name,     fg_color,       bg_color,       style
-call barow#hi('MyCustomGroup', ['#ffffff', 7], ['#000000', 0], 'bold')
-```
-For more details see `:h highlight-args`.
+>
+  " arguments:   group_name,     fg_color,       bg_color,       style
+  call barow#hi('MyCustomGroup', ['#ffffff', 7], ['#000000', 0], 'bold')
+<
+For more details see |highlight-args|.
 
-### `barow#update`
+                                                                 *barow#update*
 
-To update the statusline call `barow#update` function. Useful if you write a module.
-```
-call barow#update()
-```
+To update the statusline call `barow#update` function. Useful if you write
+a module.
+>
+  call barow#update()
+<
 
-### color support
-- Truecolor
-- 256 color
+                                                                 *barow-color*
 
-### license
+Truecolor and 256 colors are supported.
+
+==============================================================================
+LICENSE                                                        *barow-license*
+
 Mozilla Public License 2.0
+https://mozilla.org/MPL/2.0/
+
