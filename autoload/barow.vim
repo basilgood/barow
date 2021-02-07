@@ -5,7 +5,7 @@
 let s:save_cpo = &cpo
 set cpo&vim
 
-if exists('g:barowAutoload')
+if exists('g:barow_autoload')
   finish
 endif
 let g:barow_autoload = 1
