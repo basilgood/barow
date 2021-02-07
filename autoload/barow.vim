@@ -5,10 +5,10 @@
 let s:save_cpo = &cpo
 set cpo&vim
 
-if exists("g:barowAutoload")
+if exists('g:barowAutoload')
   finish
 endif
-let g:barowAutoload = 1
+let g:barow_autoload = 1
 
 function! s:path_head(path, default)
   let list = split(a:path, '/')
@@ -91,7 +91,7 @@ function! SetModeHi()
   return ""
 endfunction
 
-function! s:IsTabChanged(n)
+function! s:is_tab_changed(n)
   let buflist = tabpagebuflist(a:n)
   for i in buflist
     let bufinfo = get(getbufinfo(i), 0, { 'changed': 0 })
@@ -121,7 +121,7 @@ function! SetTabLine()
       let s .= '%#TabLine#'
     endif
     let s .= ' %'.i.'T%1.20{TabLabel('.i.')}'
-    if s:IsTabChanged(i)
+    if s:is_tab_changed(i)
       let symbol = get(g:barow.tab_changed, "value", g:barowDefault.tab_changed.value)
       if i == tabpagenr()
         let s .= '%#BarowTChange#'.symbol
@@ -137,7 +137,7 @@ function! SetTabLine()
   return s
 endfunction
 
-function! s:Modules()
+function! s:modules()
   let index = len(g:barow.modules) - 1
   let modules = ""
   while index >= 0
@@ -161,7 +161,7 @@ function! barow#update()
   let mode = "%{SetModeHi()}%#BarowMod#%1.1{Mode()[0]}%*"
   let modeInactive = "%#BarowModeNC#".get(inactive, 0, g:barowDefault.modes.inactive[0])."%*"
   let spacer = "%="
-  let modules = s:Modules()
+  let modules = s:modules()
   for n in range(1, winnr('$'))
     if n == winnr()
       let bufName = "%#BarowBufName#%2.40{Bufname()}%*"

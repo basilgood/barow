@@ -5,10 +5,10 @@
 let s:save_cpo = &cpo
 set cpo&vim
 
-if exists("g:barowInit")
+if exists('g:barow_plugin')
   finish
 endif
-let g:barowInit = 1
+let g:barow_plugin = 1
 
 let g:barowDefault = {
       \'modes': {
@@ -50,7 +50,7 @@ let g:barowDefault = {
       \'modules': []
       \}
 
-function! s:NormalizeConfig()
+function! s:normalize_config()
   if !exists('g:barow') || type(g:barow) != v:t_dict
     let g:barow = g:barowDefault
     return
@@ -62,7 +62,7 @@ function! s:NormalizeConfig()
 	endfor
 endfunction
 
-call s:NormalizeConfig()
+call s:normalize_config()
 
 augroup barow
   autocmd!
