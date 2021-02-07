@@ -11,43 +11,45 @@ endif
 let g:barow_plugin = 1
 
 let g:barowDefault = {
-      \'modes': {
-      \  'normal': [ ' ', 'BarowNormal' ],
-      \  'insert': [ 'i', 'BarowInsert' ],
-      \  'replace': [ 'r', 'BarowReplace' ],
-      \  'visual': [ 'v', 'BarowVisual' ],
-      \  'v-line': [ 'l', 'BarowVisual' ],
-      \  'v-block': [ 'b', 'BarowVisual' ],
-      \  'select': [ 's', 'BarowVisual' ],
-      \  'command': [ 'c', 'BarowCommand' ],
-      \  'shell-ex': [ '!', 'BarowCommand' ],
-      \  'terminal': [ 't', 'BarowTerminal' ],
-      \  'prompt': [ 'p', 'BarowNormal' ],
-      \  'inactive': [ ' ', 'BarowModeNC' ]
-      \},
-      \'buf_name': {
-      \  'empty': '',
-      \  'highlight': [ 'BarowBufName', 'BarowBufNameNC' ]
-      \},
-      \'read_only': {
-      \  'value': 'ro',
-      \  'highlight': [ 'BarowRO', 'BarowRONC' ]
-      \},
-      \'buf_changed': {
-      \  'value': '*',
-      \  'highlight': [ 'BarowChange', 'BarowChangeNC' ]
-      \},
-      \'tab_changed': {
-      \  'value': '*',
-      \  'highlight': [ 'BarowTChange', 'BarowTChangeNC' ]
-      \},
-      \'line_percent': {
-      \  'highlight': [ 'BarowLPercent', 'BarowLPercentNC' ]
-      \},
-      \'row_col': {
-      \  'highlight': [ 'BarowRowCol', 'BarowRowColNC' ]
-      \},
-      \'modules': []
+      \  'modes': {
+      \    'normal': [' ', 'BarowNormal'],
+      \    'insert': ['i', 'BarowInsert'],
+      \    'replace': ['r', 'BarowReplace'],
+      \    'visual': ['v', 'BarowVisual'],
+      \    'v-line': ['l', 'BarowVisual'],
+      \    'v-block': ['b', 'BarowVisual'],
+      \    'select': ['s', 'BarowVisual'],
+      \    'command': ['c', 'BarowCommand'],
+      \    'shell-ex': ['!', 'BarowCommand'],
+      \    'terminal': ['t', 'BarowTerminal'],
+      \    'prompt': ['p', 'BarowNormal'],
+      \    'inactive': [' ', 'BarowModeNC']
+      \  },
+      \  'statusline': ['Barow', 'BarowNC'],
+      \  'tabline': ['BarowTab', 'BarowTabSel', 'BarowTabFill'],
+      \  'buf_name': {
+      \    'empty': '',
+      \    'hi': ['BarowBufName', 'BarowBufNameNC']
+      \  },
+      \  'read_only': {
+      \    'value': 'ro',
+      \    'hi': ['BarowRO', 'BarowRONC']
+      \  },
+      \  'buf_changed': {
+      \    'value': '*',
+      \    'hi': ['BarowChange', 'BarowChangeNC']
+      \  },
+      \  'tab_changed': {
+      \    'value': '*',
+      \    'hi': ['BarowTChange', 'BarowTChangeNC']
+      \  },
+      \  'line_percent': {
+      \    'hi': ['BarowLPercent', 'BarowLPercentNC']
+      \  },
+      \  'row_col': {
+      \    'hi': ['BarowRowCol', 'BarowRowColNC']
+      \  },
+      \  'modules': []
       \}
 
 function! s:normalize_config()
@@ -82,11 +84,11 @@ let s:p={
       \ 'UIBrown': ['#93896C', 102],
       \ 'UIOrange': ['#BE9117', 136]
       \ }
-call barow#hi('StatusLine', s:p.statusLineFg, s:p.statusLine)
-call barow#hi('StatusLineNC', s:p.statusLineNC, s:p.statusLine)
-call barow#hi('TabLine', s:p.statusLineFg, s:p.statusLine)
-call barow#hi('TabLineFill', s:p.statusLine, s:p.statusLine)
-call barow#hi('TabLineSel', s:p.tabLineFg, s:p.tabLineSel)
+call barow#hi('Barow', s:p.statusLineFg, s:p.statusLine)
+call barow#hi('BarowNC', s:p.statusLineNC, s:p.statusLine)
+call barow#hi('BarowTab', s:p.statusLineFg, s:p.statusLine)
+call barow#hi('BarowTabSel', s:p.tabLineFg, s:p.tabLineSel)
+call barow#hi('BarowTabFill', s:p.statusLine, s:p.statusLine)
 call barow#hi('BarowBufName', s:p.statusLineFg, s:p.statusLine, 'italic')
 call barow#hi('BarowBufNameNC', s:p.statusLineNC, s:p.statusLine, 'italic')
 call barow#hi('BarowChange', s:p.UIBrown, s:p.statusLine)
@@ -95,18 +97,18 @@ call barow#hi('BarowTChangeNC', s:p.UIBrown, s:p.statusLine)
 call barow#hi('BarowTChange', s:p.UIBrown, s:p.tabLineSel)
 call barow#hi('BarowRO', s:p.UIRed, s:p.statusLine, 'bold')
 call barow#hi('BarowRONC', s:p.statusLineNC, s:p.statusLine, 'bold')
-hi link BarowLPercent StatusLine
-hi link BarowLPercentNC StatusLineNC
-hi link BarowRowCol StatusLine
-hi link BarowRowColNC StatusLineNC
+hi! link BarowLPercent Barow
+hi! link BarowLPercentNC BarowNC
+hi! link BarowRowCol Barow
+hi! link BarowRowColNC BarowNC
 call barow#hi('BarowNormal', s:p.statusLineFg, s:p.statusLine, 'bold')
 call barow#hi('BarowInsert', s:p.UIGreen, s:p.statusLine, 'bold')
 call barow#hi('BarowReplace', s:p.UIRed, s:p.statusLine, 'bold')
 call barow#hi('BarowVisual', s:p.UIBlue, s:p.statusLine, 'bold')
 call barow#hi('BarowCommand', s:p.UIBrown, s:p.statusLine, 'bold')
 call barow#hi('BarowTerminal', s:p.UIGreen, s:p.statusLine, 'bold')
-hi link BarowMode BarowNormal
-hi link BarowModeNC StatusLineNC
+hi! link BarowMode BarowNormal
+hi! link BarowModeNC BarowNC
 call barow#hi('BarowError', s:p.UIRed, s:p.statusLine, 'bold')
 call barow#hi('BarowWarning', s:p.UIOrange, s:p.statusLine)
 call barow#hi('BarowInfo', s:p.UIBrown, s:p.statusLine)

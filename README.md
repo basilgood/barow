@@ -20,56 +20,65 @@ Then run in vim:
 If you use vim's native package `:h packages`.
 
 ### usage
-Barow works out of the box.\
-But if you want, here are all the options you can customize
+
+All settings are optional.
+The default configuration is as follows:
+
 ```
 " in .vimrc/init.vim
 
 let g:barow = {
-      \'modes': {
-      \  'normal': [ ' ', 'BarowNormal' ],
-      \  'insert': [ 'i', 'BarowInsert' ],
-      \  'replace': [ 'r', 'BarowReplace' ],
-      \  'visual': [ 'v', 'BarowVisual' ],
-      \  'v-line': [ 'l', 'BarowVisual' ],
-      \  'v-block': [ 'b', 'BarowVisual' ],
-      \  'select': [ 's', 'BarowVisual' ],
-      \  'command': [ 'c', 'BarowCommand' ],
-      \  'shell-ex': [ '!', 'BarowCommand' ],
-      \  'terminal': [ 't', 'BarowTerminal' ],
-      \  'prompt': [ 'p', 'BarowNormal' ],
-      \  'inactive': [ ' ', 'BarowModeNC' ]
-      \},
-      \'buf_name': {
-      \  'empty': '',
-      \  'highlight': [ 'BarowBufName', 'BarowBufNameNC' ]
-      \},
-      \'read_only': {
-      \  'value': 'ro',
-      \  'highlight': [ 'BarowRO', 'BarowRONC' ]
-      \},
-      \'buf_changed': {
-      \  'value': '*',
-      \  'highlight': [ 'BarowChange', 'BarowChangeNC' ]
-      \},
-      \'tab_changed': {
-      \  'value': '*',
-      \  'highlight': [ 'BarowTChange', 'BarowTChangeNC' ]
-      \},
-      \'line_percent': {
-      \  'highlight': [ 'BarowLPercent', 'BarowLPercentNC' ]
-      \},
-      \'row_col': {
-      \  'highlight': [ 'BarowRowCol', 'BarowRowColNC' ]
-      \},
-      \'modules': []
+      \  'modes': {
+      \    'normal': [' ', 'BarowNormal'],
+      \    'insert': ['i', 'BarowInsert'],
+      \    'replace': ['r', 'BarowReplace'],
+      \    'visual': ['v', 'BarowVisual'],
+      \    'v-line': ['l', 'BarowVisual'],
+      \    'v-block': ['b', 'BarowVisual'],
+      \    'select': ['s', 'BarowVisual'],
+      \    'command': ['c', 'BarowCommand'],
+      \    'shell-ex': ['!', 'BarowCommand'],
+      \    'terminal': ['t', 'BarowTerminal'],
+      \    'prompt': ['p', 'BarowNormal'],
+      \    'inactive': [' ', 'BarowModeNC']
+      \  },
+      \  'statusline': ['Barow', 'BarowNC'],
+      \  'tabline': ['BarowTab', 'BarowTabSel', 'BarowTabFill'],
+      \  'buf_name': {
+      \    'empty': '',
+      \    'hi': ['BarowBufName', 'BarowBufNameNC']
+      \  },
+      \  'read_only': {
+      \    'value': 'ro',
+      \    'hi': ['BarowRO', 'BarowRONC']
+      \  },
+      \  'buf_changed': {
+      \    'value': '*',
+      \    'hi': ['BarowChange', 'BarowChangeNC']
+      \  },
+      \  'tab_changed': {
+      \    'value': '*',
+      \    'hi': ['BarowTChange', 'BarowTChangeNC']
+      \  },
+      \  'line_percent': {
+      \    'hi': ['BarowLPercent', 'BarowLPercentNC']
+      \  },
+      \  'row_col': {
+      \    'hi': ['BarowRowCol', 'BarowRowColNC']
+      \  },
+      \  'modules': []
       \}
 ```
-NOTE: For `modes`, the text value is intentionally set to one character max.
+You can customize any of these values.
 
-NOTE: The strings `Barow*` are highlight groups. You can use `barow#hi` function to create your own groups.
+NOTE: For any value you want to customize provide a value with the same data structure. Otherwise barow will throw an error and exit.
+
+NOTE: For `modes`, `buf_changed` and `tab_changed` the text length is intentionally set to one character max.
+
+NOTE: The strings that starts with `Barow*` are highlight groups. To change the colors you can give your own groups. Use |barow#hi| function to define your own groups.
 
 ### modules
+
 You can add additional modules to your bar in a simple way.\
 Available modules:
 - [barowLSP](https://github.com/doums/barowLSP), display LSP diagnostics count and status
@@ -97,6 +106,8 @@ let g:barow = {
       \  ]
       \}
 ```
+
+Each module is a list of two items. The first one is the function to call to get the output of the module. The second is the highlight group.
 
 NOTE: Module outputs will only appear in the statusbar of the current window.
 
