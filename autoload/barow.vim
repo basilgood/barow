@@ -211,7 +211,7 @@ function barow#hi(group, fg, ...)
   execute join(hiList)
 endfunction
 
-function s:printerr(msg)
+function! s:printerr(msg)
   echohl ErrorMsg
   echom a:msg
   echohl None
