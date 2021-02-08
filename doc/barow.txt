@@ -6,7 +6,6 @@ SETTING                                                        *barow-setting*
 
 All settings are optional.
 The default configuration is as follows:
-
 >
   let g:barow = {
       \  'modes': {
@@ -73,7 +72,6 @@ display LSP diagnostic and status
 
 `barowGit` https://github.com/doums/barowGit
 display git current branch
-
 >
   Plug 'doums/barow'
   Plug 'doums/barowGit'
