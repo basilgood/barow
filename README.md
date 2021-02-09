@@ -69,13 +69,13 @@ let g:barow = {
       \  'modules': []
       \}
 ```
-You can customize any of these values.
+You can customize any of these values.\
+For any value you want to customize provide a value with the same data structure. Otherwise barow will throw an error and exit.
 
-NOTE: For any value you want to customize provide a value with the same data structure. Otherwise barow will throw an error and exit.
+For `modes`, `buf_changed` and `tab_changed` the text length is intentionally set to one character max.
 
-NOTE: For `modes`, `buf_changed` and `tab_changed` the text length is intentionally set to one character max.
-
-NOTE: The strings that starts with `Barow*` are highlight groups. To change the colors you can give your own groups. Use `barow#hi` function to define your own groups.
+The strings that start with `Barow*` are highlight groups. To change the colors you can give your own groups. Use `barow#hi` function to define your own groups.\
+All `hi` keys and `statusline` key expect a list of two hi groups. First is for the statusline of the current window, second for statusline in other window.
 
 ### modules
 
@@ -107,9 +107,8 @@ let g:barow = {
       \}
 ```
 
-Each module is a list of two items. The first one is the function to call to get the output of the module. The second is the highlight group.
-
-NOTE: Module outputs will only appear in the statusbar of the current window.
+Each module is a list of two items. The first one is the function to call to get the output of the module. The second is the highlight group.\
+Module outputs will only appear in the statusbar of the current window.
 
 You can define your own module. To update the statusline call `barow#update` function.
 
@@ -117,7 +116,7 @@ You can define your own module. To update the statusline call `barow#update` fun
 
 You can use `barow#hi` function to create your own highlight groups.
 ```
-" arguments:   group_name,     fg_color,       bg_color,       style
+" arguments:   group_name,     fg_color,       bg_color,       style (optional)
 call barow#hi('MyCustomGroup', ['#ffffff', 7], ['#000000', 0], 'bold')
 ```
 For more details see `:h highlight-args`.
