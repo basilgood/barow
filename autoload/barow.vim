@@ -144,7 +144,7 @@ function! s:modules()
     let [function, hi] = g:barow.modules[index]
     try
       let output = eval(function.'()')
-      let modules .= '%#'.hi.'#%-1.20('.output.'%<%)%*'
+      let modules .= '%#'.hi.'#%-1.40('.output.'%<%)%*'
       if index >= 0 && len(output) > 0
         let modules .= s:hifmt(g:barow.statusline[0]).' '
       endif
