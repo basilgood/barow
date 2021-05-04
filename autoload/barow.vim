@@ -176,14 +176,14 @@ function! barow#update() abort
       let buf_name = s:hifmt(g:barow.buf_name.hi[s:hi_index(n)]).'%2.50{Bufname()}%*'
       let ro = s:hifmt(g:barow.read_only.hi[s:hi_index(n)]).'%{ReadOnly()}%*'
       let buf_changed = s:hifmt(g:barow.buf_changed.hi[s:hi_index(n)]).'%1.1{BufChanged()}%*'
+      let ft = s:hifmt(g:barow.ft.hi[s:hi_index(n)]).'%{&filetype}%*'
       let row_col = s:hifmt(g:barow.row_col.hi[s:hi_index(n)]).'%4.9l:%-3.9c%*'
-      let line_percent = s:hifmt(g:barow.line_percent.hi[s:hi_index(n)]).'%3.3p%%%*'
     if n == winnr()
-      call setwinvar(n, '&statusline', space.mode.space.buf_name.space.ro.space.buf_changed.spacer.modules.space.row_col.space.line_percent.space)
+      call setwinvar(n, '&statusline', space.mode.space.buf_name.space.ro.space.buf_changed.spacer.modules.space.ft.space.row_col.space)
     else
       call setwinvar(n, '&statusline', space.mode_inactive.space.buf_name.space.ro.space.buf_changed.spacer.row_col.space.line_percent.space)
     endif
-    call setwinvar(n, '&tabline', '%!SetTabLine()')
+    call setwinvar(n, '&statusline', space.mode_inactive.space.buf_name.space.ro.space.buf_changed.spacer.ft.space.row_col.space)
   endfor
 endfunction
 
