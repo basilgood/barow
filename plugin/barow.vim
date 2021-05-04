@@ -36,18 +36,18 @@ let g:barowDefault = {
       \    'hi': ['BarowRO', 'BarowRONC']
       \  },
       \  'buf_changed': {
-      \    'value': '*',
+      \    'value': '+',
       \    'hi': ['BarowChange', 'BarowChangeNC']
       \  },
       \  'tab_changed': {
-      \    'value': '*',
+      \    'value': '+',
       \    'hi': ['BarowTChange', 'BarowTChangeNC']
-      \  },
-      \  'line_percent': {
-      \    'hi': ['BarowLPercent', 'BarowLPercentNC']
       \  },
       \  'row_col': {
       \    'hi': ['BarowRowCol', 'BarowRowColNC']
+      \  },
+      \  'ft': {
+      \    'hi': ['BarowFt', 'BarowFtNC']
       \  },
       \  'modules': []
       \}
@@ -91,14 +91,14 @@ call barow#hi('BarowTabSel', s:p.tabLineFg, s:p.tabLineSel)
 call barow#hi('BarowTabFill', s:p.statusLine, s:p.statusLine)
 call barow#hi('BarowBufName', s:p.statusLineFg, s:p.statusLine, 'italic')
 call barow#hi('BarowBufNameNC', s:p.statusLineNC, s:p.statusLine, 'italic')
-call barow#hi('BarowChange', s:p.UIBrown, s:p.statusLine)
+call barow#hi('BarowChange', s:p.UIRed, s:p.statusLine)
 call barow#hi('BarowChangeNC', s:p.statusLineNC, s:p.statusLine)
 call barow#hi('BarowTChangeNC', s:p.UIBrown, s:p.statusLine)
-call barow#hi('BarowTChange', s:p.UIBrown, s:p.tabLineSel)
+call barow#hi('BarowTChange', s:p.UIRed, s:p.tabLineSel)
 call barow#hi('BarowRO', s:p.UIRed, s:p.statusLine, 'bold')
 call barow#hi('BarowRONC', s:p.statusLineNC, s:p.statusLine, 'bold')
-hi! link BarowLPercent Barow
-hi! link BarowLPercentNC BarowNC
+hi! link BarowFt Barow
+hi! link BarowFtNC BarowNC
 hi! link BarowRowCol Barow
 hi! link BarowRowColNC BarowNC
 call barow#hi('BarowNormal', s:p.statusLineFg, s:p.statusLine, 'bold')
