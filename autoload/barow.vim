@@ -181,7 +181,7 @@ function! barow#update() abort
     if n == winnr()
       call setwinvar(n, '&statusline', space.mode.space.buf_name.space.ro.space.buf_changed.spacer.modules.space.ft.space.row_col.space)
     else
-      call setwinvar(n, '&statusline', space.mode_inactive.space.buf_name.space.ro.space.buf_changed.spacer.row_col.space.line_percent.space)
+      call setwinvar(n, '&statusline', space.mode_inactive.space.buf_name.space.ro.space.buf_changed.spacer.ft.space.row_col.space)
     endif
     call setwinvar(n, '&statusline', space.mode_inactive.space.buf_name.space.ro.space.buf_changed.spacer.ft.space.row_col.space)
   endfor
