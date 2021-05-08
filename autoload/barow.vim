@@ -183,7 +183,7 @@ function! barow#update() abort
     else
       call setwinvar(n, '&statusline', space.mode_inactive.space.buf_name.space.ro.space.buf_changed.spacer.ft.space.row_col.space)
     endif
-    call setwinvar(n, '&statusline', space.mode_inactive.space.buf_name.space.ro.space.buf_changed.spacer.ft.space.row_col.space)
+    call setwinvar(n, '&tabline', '%!SetTabLine()')
   endfor
 endfunction
 
